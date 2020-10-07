@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BlogMVC.Models.UrunModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ürün Listesi</h2>
+
+@*@foreach (var item in Model)
+    {
+        <p>@item.Baslik</p>
+    }*@
+@* Bu foreach ı ilk başta oluşturumuştum *@
+
+@*@*<div class="row">
+    @*<div class="col-md-8"></div>*@
+@*@foreach (var item in Model)
+    {
+        <div class="urun">
+            <h3 class="page-header">
+                @item.Baslik
+            </h3>
+            <p>
+                <span class="glyphicon glyphicon-time"></span>
+                @item.EklenmeTarihi
+            </p>
+            <hr />
+            <img class="img-responsive" src="http://placehold.it/900x300" alt="" />
+            <hr />
+            <p>
+                @item.Aciklama
+            </p>
+            @Html.ActionLink("Devamı...", "Details", "Product", new { id = item.Id }, new { @class = "btn btn-success" })
+            @*<button class="btn btn-primary">Devamı...</button>*@
+@*</div>*@
+
+@*<div class="col-md-4"></div>  aşağısı 4 lük kısım oluyor yukaırısı 8 lik kısım oluyor*@
+
+
+@Html.Partial("UrunListesi", Model)
+
+@section SagKolon
+        {
+
+    @* <div class="well">
+            <h4>Ürün Ara</h4>
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+            <!-- /.input-group -->
+        </div>*@
+    @Html.Partial("Arama")
+
+    @{Html.RenderAction("KategoriListesi", "Categori"); }
+
+}
+
+@*</div>*@
+
